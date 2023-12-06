@@ -8,6 +8,17 @@ const roverData = new Map();
 
 // asynchronous getJson() function that makes API requests goes here
 
+const getJson = async (url) => {
+    try {
+        console.log('Request URL:', url); 
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching JSON:', error);
+    }
+}
+
 const getSelectedDate = () => {
     const year = $("#year").val();
     const month = $("#month").val();
@@ -89,6 +100,7 @@ $(document).ready( async () => {
             $("#options").hide();
         }
     });
+
 
     // click event handler for View Photos button
     $("#view").click( async () => {
